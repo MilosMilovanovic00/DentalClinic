@@ -11,7 +11,7 @@ import java.time.LocalTime;
 @Setter
 @Getter
 @Entity
-@Table
+@Table(name = "APPOINTMENTS")
 public class Appointment {
     @Id
     @SequenceGenerator(

@@ -1,5 +1,6 @@
 package com.example.project.user;
 
+import com.example.project.address.Address;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,4 +31,6 @@ public class User {
     private String email;
     private String profileImage;
     private Role role;
+    @OneToOne
+    private Address address;
 }
