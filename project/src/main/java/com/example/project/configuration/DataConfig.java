@@ -27,7 +27,6 @@ public class DataConfig {
             this.addressRepository = addressRepository;
             this.appointmentsRepository = appointmentsRepository;
             this.userRepository = userRepository;
-            //TODO postavi im prave jmbg
             Address address1 = new Address(
                     1L,
                     "El Cajon",

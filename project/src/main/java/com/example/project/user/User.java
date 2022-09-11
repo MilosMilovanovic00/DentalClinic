@@ -32,5 +32,6 @@ public class User {
     private String profileImage;
     private Role role;
     @OneToOne
+    @JoinColumn
     private Address address;
 }
