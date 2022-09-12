@@ -13,10 +13,4 @@ root.render(
         </DevSupport>
     </React.StrictMode>
 );
-const colorPalette={
-    darkest:"#46A094",
-    mediumDark:"#6BBD99",
-    mediumLight:"#AECFA4",
-    lightest:"#C4E8c2",
-}
-export default colorPalette
+

@@ -1,31 +1,35 @@
-import colorPalette from "./index";
+import colorPalette, {showError, showInfo, showSuccess} from "./utils.js";
 import 'bootstrap/dist/css/bootstrap.css';
 import {Button, Form} from "react-bootstrap";
 import './colors.scss'
-import {useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Login() {
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState("");
 
     function logIn() {
-        if(email===""){
-            console.log('bzvz')
-        }
-        else if(!email.toString().includes("@gmail.com")) {
-            console.log('bzvz')
-        }
-        else{
+        if (email === "") {
+            showInfo("Email can't be blank")
+        } else if (!email.includes("@gmail.com")) {
+            showInfo("Email must include @gmail.com")
+        } else {
             axios.post("http://localhost:8080/user/login", email,
                 {
                     headers: {
                         'Content-Type': 'text/plain'
                     }
                 }).then(value => {
-                console.log(value.data)
-                //TODO postavi toast
+                showSuccess(value.data.message)
+                localStorage.setItem("token", value.data.token)
+                setTimeout(function () {
+                    window.location.href = "http://localhost:3000/user/" + value.data.userId
+                }, 2000)
             }).catch(reason => {
                 console.log(reason.response.data)
+                showError(reason.response.data.message)
             })
         }
     }
@@ -42,7 +46,7 @@ export default function Login() {
                         <Form.Group className="my-3 mx-1" controlId="formBasicEmail">
                             <Form.Label className="text-white fs-4">Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email"
-                                          onInput={event => setEmail(event.target.value)} />
+                                          onInput={event => setEmail(event.target.value)}/>
                         </Form.Group>
                     </Form>
                     <div className="d-flex justify-content-center mt-1">
@@ -52,6 +56,18 @@ export default function Login() {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme={"colored"}
+            />
         </div>
     )
 }

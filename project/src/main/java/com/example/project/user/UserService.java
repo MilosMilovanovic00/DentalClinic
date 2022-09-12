@@ -1,5 +1,6 @@
 package com.example.project.user;
 
+import com.example.project.dto.LoginResponseDTO;
 import com.example.project.exceptions.UserNotFound;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,7 +16,7 @@ public class UserService {
     private String APP_NAME;
     @Value("some-secret")
     public String SECRET;
-    private SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
+    private final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
     private final UserRepository userRepository;
 
     @Autowired
@@ -27,15 +28,20 @@ public class UserService {
         return userRepository.getUserByEmail(email);
     }
 
-    public String login(String email) {
+    public LoginResponseDTO login(String email) {
+        LoginResponseDTO loginResponseDTO = new LoginResponseDTO();
         User user = getUserByEmail(email);
         if (user == null)
             throw new UserNotFound("This user doesn't exists");
-        return Jwts.builder()
+        String token = Jwts.builder()
                 .setIssuer(APP_NAME)
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .signWith(SIGNATURE_ALGORITHM, SECRET).compact();
+        loginResponseDTO.setUserId(String.valueOf(user.getId()));
+        loginResponseDTO.setMessage("You successfully have log in");
+        loginResponseDTO.setToken(token);
+        return loginResponseDTO;
     }
 
 
