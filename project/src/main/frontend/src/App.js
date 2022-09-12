@@ -1,16 +1,16 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Login from "./Login";
-import UserProfile from "./UserProfile";
+import UserProfile from "./user/UserProfile";
+import React from 'react'
 
 function App() {
     return (
-        <Login></Login>
-        // <BrowserRouter>
-        //     <Routes>
-        //         <Route path="/" element={<Login/>}></Route>
-        //         <Route path="/user/:email" element={<UserProfile/>}></Route>
-        //     </Routes>
-        // </BrowserRouter>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Login/>}></Route>
+                <Route path="/user/:id" element={<UserProfile/>}></Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
 

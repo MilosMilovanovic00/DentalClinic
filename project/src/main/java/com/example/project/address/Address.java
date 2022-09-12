@@ -27,4 +27,8 @@ public class Address {
     private String state;
     private String streetName;
     private String number;
+
+    public String getAddressPrint(){
+        return this.streetName+" "+this.number+", "+this.city+", "+this.state;
+    }
 }

@@ -76,7 +76,7 @@ public class DataConfig {
             );
             User zika = new User(
                     2L,
-                    "žika",
+                    "Žika",
                     "Žikić",
                     "0404194718645",
                     LocalDate.of(1947, APRIL, 4),

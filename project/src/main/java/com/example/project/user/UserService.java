@@ -1,6 +1,7 @@
 package com.example.project.user;
 
 import com.example.project.dto.LoginResponseDTO;
+import com.example.project.dto.UserDTO;
 import com.example.project.exceptions.UserNotFound;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -42,6 +43,14 @@ public class UserService {
         loginResponseDTO.setMessage("You successfully have log in");
         loginResponseDTO.setToken(token);
         return loginResponseDTO;
+    }
+
+    public UserDTO getUserData(String id) {
+        User user = userRepository.getUserById(Long.valueOf(id));
+        if (user == null) {
+            throw new UserNotFound("User with this id doesn't exist");
+        }
+        return new UserDTO(user);
     }
 
 
