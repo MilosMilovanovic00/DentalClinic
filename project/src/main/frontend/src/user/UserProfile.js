@@ -4,7 +4,7 @@ import axios from "axios";
 import colorPalette from "../utils";
 import {FormText} from "react-bootstrap";
 import ProfileInfo from "./ProfileInfo";
-import Tabs from "./Tabs";
+import Tabs from "../appointments/Tabs";
 
 export default function UserProfile() {
 

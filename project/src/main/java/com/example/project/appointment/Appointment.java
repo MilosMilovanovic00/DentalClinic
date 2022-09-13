@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @NoArgsConstructor
@@ -25,8 +26,8 @@ public class Appointment {
     )
     @Setter(AccessLevel.NONE)
     private Long id;
-    private LocalDate appointmentDate;
-    private LocalTime appointmentStarTime;
+    private LocalDateTime start;
+    private LocalDateTime end;
     private AnalysisType analysisType;
     private String doctorEmail;
     private String patientEmail;

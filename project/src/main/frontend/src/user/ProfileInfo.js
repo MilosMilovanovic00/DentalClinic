@@ -48,7 +48,7 @@ export default function ProfileInfo() {
                     <FormText className="text-white fs-5 w-50">{user.dateOfBirth}</FormText>
                 </div>
             </div>
-            <div className="d-flex flex-column m-5">
+            <div className="d-flex flex-column mt-auto mx-5">
                 <Button variant="lightest" onClick={logOut}><FiLogOut className="mx-1"/>Log out</Button>
             </div>
         </div>
