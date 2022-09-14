@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -51,6 +53,16 @@ public class UserService {
             throw new UserNotFound("User with this id doesn't exist");
         }
         return new UserDTO(user);
+    }
+
+    public ArrayList<String> getEmails(String role) {
+        ArrayList<String> list = new ArrayList<>();
+        for (User user : userRepository.findAll()) {
+            if (!user.getRole().name().equals(role)) {
+                list.add(user.getEmail());
+            }
+        }
+        return list;
     }
 
 

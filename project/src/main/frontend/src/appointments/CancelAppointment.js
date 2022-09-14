@@ -17,7 +17,7 @@ export default function CancelAppointment({handleClose, show, role, appointment}
                             <Form.Label>Your doctor: {appointment.doctorEmail}</Form.Label>
                         </div> :
                         <div className="d-flex flex-column gap-1 w-100">
-                            <Form.Label>Enter your email:{appointment.patientEmail}</Form.Label>
+                            <Form.Label>Enter your email</Form.Label>
                             <Form.Control type="email" placeholder="Enter email"/>
                             <Form.Check
                                 type="checkbox"
@@ -25,7 +25,6 @@ export default function CancelAppointment({handleClose, show, role, appointment}
                             />
                             <Form.Control type="email" placeholder="Enter patient email"/>
                         </div>
-
                     }
                     <Form.Label>Analysis type: {appointment.analysisType} </Form.Label>
                     <Form.Label>Scheduled at:

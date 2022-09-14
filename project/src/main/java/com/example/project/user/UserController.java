@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.lang.annotation.Repeatable;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -36,6 +39,10 @@ public class UserController {
         catch (Exception exception) {
             return new ResponseEntity<UserDTO>(new UserDTO(),HttpStatus.NOT_FOUND);
         }
+    }
+    @GetMapping("/emails/{role}")
+    public ResponseEntity<ArrayList<String>> getEmails(@PathVariable String role){
+        return new ResponseEntity<>(userService.getEmails(role),HttpStatus.OK);
     }
 
 }

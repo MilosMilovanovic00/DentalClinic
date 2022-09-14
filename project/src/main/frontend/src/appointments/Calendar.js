@@ -21,6 +21,7 @@ export default function Calendar() {
             analysisType:"type"
         }
     ])
+
     const [role, setRole] = useState("Doctor")
     const [appointmentData, setAppointmentData] = useState("")
 
