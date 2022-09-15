@@ -26,7 +26,7 @@ export default function Calendar() {
     }
 
     function getLoggedUserAppointments() {
-        axios.get("http://localhost:8080/appointment/getByUser", {
+        axios.get("http://localhost:8080/appointment/loggedUser", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -39,7 +39,8 @@ export default function Calendar() {
         getLoggedUserRole()
         getLoggedUserAppointments()
     }, [])
-    const [role, setRole] = useState("Doctor")
+
+    const [role, setRole] = useState("")
     const [appointmentData, setAppointmentData] = useState("")
 
     const [showScheduling, setShowScheduling] = useState(false);
@@ -59,7 +60,7 @@ export default function Calendar() {
         <div style={{backgroundColor: "white"}} className="p-3 rounded-2">
             <div className="d-flex flex-row gap-2">
                 <Dropdown>
-                    <Dropdown.Toggle className="mb-3" variant="lightest" id="dropdown-basic">
+                    <Dropdown.Toggle className="mb-2" variant="lightest" id="dropdown-basic">
                         Choose your view of calendar
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -67,7 +68,7 @@ export default function Calendar() {
                         <Dropdown.Item onClick={() => changeView('timeGridDay')}>Daily view</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Button variant="outline-darkest" className="mb-3"
+                <Button variant="outline-darkest" className="mb-2"
                         onClick={handleShowScheduling}>{role === 'Patient' ? "Make an appointment" : "Make an appointment for patient"}</Button>
             </div>
             <FullCalendar

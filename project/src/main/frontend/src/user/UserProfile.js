@@ -10,9 +10,9 @@ export default function UserProfile() {
 
     return (
         <div className="d-flex flex-column vh-100" style={{backgroundColor: colorPalette.lightest}}>
-            <FormText className="d-flex justify-content-center fs-1 text-darkest m-0 fw-bold fst-italic my-2"> Dental
+            <FormText className="d-flex justify-content-center fs-1 text-darkest fw-bold fst-italic mt-2 mb-1"> Dental
                 Clinic</FormText>
-            <div className="d-flex flex-row h-100 ">
+            <div className="d-flex flex-row" style={{height:"89vh"}}>
                 <ProfileInfo></ProfileInfo>
                 <Tabs></Tabs>
             </div>

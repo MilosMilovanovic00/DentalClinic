@@ -1,25 +1,20 @@
 package com.example.project.user;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.project.dto.LoginResponseDTO;
 import com.example.project.dto.UserDTO;
 import com.example.project.exceptions.UserNotFound;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class UserService {
-    @Value("spring-security")
-    private String APP_NAME;
-    @Value("some-secret")
-    public String SECRET;
-    private final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
     private final UserRepository userRepository;
 
     @Autowired
@@ -36,11 +31,11 @@ public class UserService {
         User user = getUserByEmail(email);
         if (user == null)
             throw new UserNotFound("This user doesn't exists");
-        String token = Jwts.builder()
-                .setIssuer(APP_NAME)
-                .setSubject(email)
-                .setIssuedAt(new Date())
-                .signWith(SIGNATURE_ALGORITHM, SECRET).compact();
+        Algorithm algorithm = Algorithm.HMAC256(("secret".getBytes()));
+        String token = JWT.create()
+                .withSubject(user.getEmail())
+                .withExpiresAt(new Date(System.currentTimeMillis() + 60 * 24 * 60 * 1000))
+                .sign(algorithm);
         loginResponseDTO.setUserId(String.valueOf(user.getId()));
         loginResponseDTO.setMessage("You successfully have log in");
         loginResponseDTO.setToken(token);
@@ -65,6 +60,25 @@ public class UserService {
         return list;
     }
 
+    public String getLoggedUserRole(String authorizationHeader) {
+        String email = getUsernameFromAuthorizationHeader(authorizationHeader);
+        if (email == null)
+            throw new UserNotFound("There isn't logged user");
+        User user = userRepository.getUserByEmail(email);
+        return user.getRole().name();
 
-//    @Transactional ide u servis
+    }
+
+    public String getUsernameFromAuthorizationHeader(String authorizationHeader) {
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            String token = authorizationHeader.substring("Bearer ".length());
+            Algorithm algorithm = Algorithm.HMAC256(("secret".getBytes()));
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT decodedJWT = verifier.verify(token);
+            return decodedJWT.getSubject();
+        } else {
+            throw new UserNotFound("There isn't logged user");
+        }
+    }
+
 }
