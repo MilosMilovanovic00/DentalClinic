@@ -1,5 +1,6 @@
 package com.example.project.appointment;
 
+import com.example.project.user.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,6 +30,8 @@ public class Appointment {
     private LocalDateTime start;
     private LocalDateTime end;
     private AnalysisType analysisType;
-    private String doctorEmail;
-    private String patientEmail;
+    @ManyToOne
+    private User doctor;
+    @ManyToOne
+    private User patient;
 }

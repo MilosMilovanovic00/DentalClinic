@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Button, Form, Modal} from "react-bootstrap";
 import axios from "axios";
+import {emptyInput} from "../utils";
 
 export default function ScheduleAppointment({show, handleClose, role}) {
     const [emails, setEmails] = useState([])
@@ -15,11 +16,11 @@ export default function ScheduleAppointment({show, handleClose, role}) {
 
         if (!date) newErrors.date = emptyInput
         else if (new Date(date).getDate() <= new Date().getDate()) newErrors.date = "You can't reserve in past or today"
-        const propStart=checkTime(startTime)
-        const propEnd=checkTime(endTime)
-        if(propStart!=="")
+        const propStart = checkTime(startTime)
+        const propEnd = checkTime(endTime)
+        if (propStart !== "")
             newErrors.startTime = propStart
-        if(propEnd!=="")
+        if (propEnd !== "")
             newErrors.endTime = propEnd
         if (!newErrors.startTime && !newErrors.endTime) {
             const [startHour, startMinutes] = startTime.toString().split(":")
@@ -30,15 +31,13 @@ export default function ScheduleAppointment({show, handleClose, role}) {
             const end = new Date(date)
             end.setHours(endHour)
             end.setMinutes(endMinutes)
-            form.start=start.
-            form.end=end
-            const value=parseInt(endHour)*60+parseInt(endMinutes)-parseInt(startHour)*60-parseInt(startMinutes)
+            form.start = start.form.end = end
+            const value = parseInt(endHour) * 60 + parseInt(endMinutes) - parseInt(startHour) * 60 - parseInt(startMinutes)
             if (value !== 30 && value !== 60) {
                 newErrors.startTime = "Time slot can be 30 or 60 minutes"
                 newErrors.endTime = "Time slot can be 30 or 60 minutes"
             }
         }
-
         if (role === 'Patient') {
             form.patientEmail = email
             form.doctorEmail = chosenEmail
@@ -61,7 +60,7 @@ export default function ScheduleAppointment({show, handleClose, role}) {
             else return ""
         }
     }
-    const emptyInput = 'Cannot be blank'
+
 
     function getEmails() {
         axios.get("http://localhost:8080/user/emails/" + role).then(value => {
@@ -75,13 +74,9 @@ export default function ScheduleAppointment({show, handleClose, role}) {
     const handleSubmit = e => {
         e.preventDefault()
         const newErrors = findFormErrors()
-        console.log("aaa")
         if (Object.keys(newErrors).length > 0) {
-            console.log("aaa")
-            console.log(newErrors)
             setErrors(newErrors)
         } else {
-            console.log("asaa")
             const dto = {
                 patientEmail: form.patientEmail,
                 doctorEmail: form.doctorEmail,
@@ -89,7 +84,6 @@ export default function ScheduleAppointment({show, handleClose, role}) {
                 end: form.end,
                 analysisType: form.analysisType,
             }
-            console.log(dto)
             scheduleAppointment(dto)
         }
     }
@@ -106,7 +100,7 @@ export default function ScheduleAppointment({show, handleClose, role}) {
 
 
     function scheduleAppointment() {
-
+        //TODO make end point function for scheduling
     }
 
     return (

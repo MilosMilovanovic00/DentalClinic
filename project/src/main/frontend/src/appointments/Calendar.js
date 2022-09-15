@@ -1,27 +1,44 @@
 import {Button, Card, Dropdown} from "react-bootstrap";
 import FullCalendar from "@fullcalendar/react";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import ScheduleAppointment from "./ScheduleAppointment";
 import CancelAppointment from "./CancelAppointment";
+import {showInfo} from "../utils";
+import {ToastContainer} from "react-toastify";
+import axios from "axios";
 
 export default function Calendar() {
     const calendarRef = React.createRef();
-    const [appointments, setAppointments] = useState([
-        {
-            id: "0",
-            title: "Initial Exam",
-            start: "2022-09-15T12:30:00",
-            end: "2022-09-15T13:00:00",
-            doctorEmail:"doctor",
-            patientEmail:"patient",
-            analysisType:"type"
-        }
-    ])
+    const [appointments, setAppointments] = useState([])
 
+    function getLoggedUserRole() {
+        axios.get("http://localhost:8080/user/role", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            }
+        }).then(value => {
+            setRole(value.data)
+        })
+    }
+
+    function getLoggedUserAppointments() {
+        axios.get("http://localhost:8080/appointment/getByUser", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            }
+        }).then(value => {
+            setAppointments(value.data)
+        })
+    }
+
+    useEffect(() => {
+        getLoggedUserRole()
+        getLoggedUserAppointments()
+    }, [])
     const [role, setRole] = useState("Doctor")
     const [appointmentData, setAppointmentData] = useState("")
 
@@ -50,7 +67,8 @@ export default function Calendar() {
                         <Dropdown.Item onClick={() => changeView('timeGridDay')}>Daily view</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Button variant="outline-darkest" className="mb-3" onClick={handleShowScheduling}>{role === 'Patient' ? "Make an appointment" :"Make an appointment for patient"}</Button>
+                <Button variant="outline-darkest" className="mb-3"
+                        onClick={handleShowScheduling}>{role === 'Patient' ? "Make an appointment" : "Make an appointment for patient"}</Button>
             </div>
             <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
@@ -79,7 +97,12 @@ export default function Calendar() {
                 ref={calendarRef}
                 eventClick={(arg) => {
                     for (const appointment of appointments) {
-                        if (appointment.id === arg.event.id) {
+                        const tomorrow = new Date()
+                        const date = tomorrow.getDate()
+                        tomorrow.setDate(date + 1)
+                        if (Date.parse(appointment.start) < tomorrow) {
+                            showInfo("You can't cancel appointment 24 hours")
+                        } else if (appointment.id === arg.event.id) {
                             setAppointmentData(appointment)
                             handleShowCanceling()
                         }
@@ -88,7 +111,20 @@ export default function Calendar() {
                 }
             />
             <ScheduleAppointment show={showScheduling} handleClose={closeScheduling} role={role}/>
-            <CancelAppointment show={showCanceling} handleClose={closeCanceling} role={role} appointment={appointmentData}/>
+            <CancelAppointment show={showCanceling} handleClose={closeCanceling} role={role}
+                               appointment={appointmentData}/>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme={"colored"}
+            />
         </div>
     )
 }
