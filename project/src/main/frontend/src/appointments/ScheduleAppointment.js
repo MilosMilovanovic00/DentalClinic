@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {Button, Form, Modal} from "react-bootstrap";
 import axios from "axios";
-import {emptyInput} from "../utils";
+import {emptyInput, showError, showSuccess} from "../utils";
 
-export default function ScheduleAppointment({show, handleClose, role}) {
+export default function ScheduleAppointment({show, handleClose, role, setAppointments}) {
     const [emails, setEmails] = useState([])
     const findFormErrors = () => {
-        const {start, end, analysisType, date, startTime, endTime, email, chosenEmail} = form
+        const {analysisType, date, startTime, endTime, email, chosenEmail} = form
         const newErrors = {}
         if (!email) newErrors.email = emptyInput
         else if (!email.includes('@gmail.com')) newErrors.email = 'Must contain @gmail.com'
@@ -31,7 +31,8 @@ export default function ScheduleAppointment({show, handleClose, role}) {
             const end = new Date(date)
             end.setHours(endHour)
             end.setMinutes(endMinutes)
-            form.start = start.form.end = end
+            form.start = start
+            form.end = end
             const value = parseInt(endHour) * 60 + parseInt(endMinutes) - parseInt(startHour) * 60 - parseInt(startMinutes)
             if (value !== 30 && value !== 60) {
                 newErrors.startTime = "Time slot can be 30 or 60 minutes"
@@ -63,9 +64,10 @@ export default function ScheduleAppointment({show, handleClose, role}) {
 
 
     function getEmails() {
-        axios.get("http://localhost:8080/user/emails/" + role).then(value => {
-            setEmails(value.data)
-        })
+        if (role !== "")
+            axios.get("http://localhost:8080/user/emails/" + role).then(value => {
+                setEmails(value.data)
+            })
 
     }
 
@@ -80,10 +82,11 @@ export default function ScheduleAppointment({show, handleClose, role}) {
             const dto = {
                 patientEmail: form.patientEmail,
                 doctorEmail: form.doctorEmail,
-                start: form.start,
-                end: form.end,
+                start: form.start.toISOString().split(".")[0],
+                end: form.end.toISOString().split(".")[0],
                 analysisType: form.analysisType,
             }
+            console.log(dto)
             scheduleAppointment(dto)
         }
     }
@@ -99,7 +102,17 @@ export default function ScheduleAppointment({show, handleClose, role}) {
     }, [role])
 
 
-    function scheduleAppointment() {
+    function scheduleAppointment(dto) {
+        axios.post("http://localhost:8080/appointment/schedule", dto, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        }).then(value => {
+            setAppointments(value.data)
+            showSuccess("Ypu successfully scheduled an appointment")
+        }).catch(reason => {
+            showError('Some thing went wrong try again')
+        })
         //TODO make end point function for scheduling
     }
 

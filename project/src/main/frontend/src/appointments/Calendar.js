@@ -1,4 +1,4 @@
-import {Button, Card, Dropdown} from "react-bootstrap";
+import {Button, Dropdown} from "react-bootstrap";
 import FullCalendar from "@fullcalendar/react";
 import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,6 +14,16 @@ import axios from "axios";
 export default function Calendar() {
     const calendarRef = React.createRef();
     const [appointments, setAppointments] = useState([])
+    const [role, setRole] = useState("")
+    const [appointmentData, setAppointmentData] = useState("")
+
+    const [showScheduling, setShowScheduling] = useState(false);
+    const [showCanceling, setShowCanceling] = useState(false);
+
+    const closeScheduling = () => setShowScheduling(false);
+    const closeCanceling = () => setShowCanceling(false);
+    const handleShowScheduling = () => setShowScheduling(true);
+    const handleShowCanceling = () => setShowCanceling(true);
 
     function getLoggedUserRole() {
         axios.get("http://localhost:8080/user/role", {
@@ -39,17 +49,6 @@ export default function Calendar() {
         getLoggedUserRole()
         getLoggedUserAppointments()
     }, [])
-
-    const [role, setRole] = useState("")
-    const [appointmentData, setAppointmentData] = useState("")
-
-    const [showScheduling, setShowScheduling] = useState(false);
-    const [showCanceling, setShowCanceling] = useState(false);
-
-    const closeScheduling = () => setShowScheduling(false);
-    const closeCanceling = () => setShowCanceling(false);
-    const handleShowScheduling = () => setShowScheduling(true);
-    const handleShowCanceling = () => setShowCanceling(true);
 
     const changeView = (view) => {
         calendarRef.current
@@ -111,9 +110,10 @@ export default function Calendar() {
                 }
                 }
             />
-            <ScheduleAppointment show={showScheduling} handleClose={closeScheduling} role={role}/>
+            <ScheduleAppointment show={showScheduling} handleClose={closeScheduling} role={role}
+                                 setAppointments={setAppointments}/>
             <CancelAppointment show={showCanceling} handleClose={closeCanceling} role={role}
-                               appointment={appointmentData}/>
+                               appointment={appointmentData} setAppointments={setAppointments}/>
             <ToastContainer
                 position="bottom-center"
                 autoClose={5000}

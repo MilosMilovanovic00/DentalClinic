@@ -23,7 +23,10 @@ public class UserService {
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.getUserByEmail(email);
+        User user = userRepository.getUserByEmail(email);
+        if (user == null)
+            throw new UserNotFound("User with this email doesn't exist");
+        return user;
     }
 
     public LoginResponseDTO login(String email) {

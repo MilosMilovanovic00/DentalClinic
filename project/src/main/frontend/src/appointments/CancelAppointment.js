@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import {Button, Form, Modal} from "react-bootstrap";
 import {emptyInput} from "../utils";
+import axios from "axios";
 
-export default function CancelAppointment({handleClose, show, role, appointment}) {
+export default function CancelAppointment({handleClose, show, role, appointment, setAppointments}) {
     const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     const [cancelForPatient, setCancelForPatient] = useState(false)
 
@@ -16,7 +17,7 @@ export default function CancelAppointment({handleClose, show, role, appointment}
         if (!doctorEmail) newErrors.doctorEmail = emptyInput
         else if (!doctorEmail.includes('@gmail.com')) newErrors.doctorEmail = 'Must contain @gmail.com'
 
-        if(cancelForPatient) {
+        if (cancelForPatient) {
             if (!patientEmail) newErrors.patientEmail = emptyInput
             else if (!patientEmail.includes('@gmail.com')) newErrors.patientEmail = 'Must contain @gmail.com'
         }
@@ -24,7 +25,11 @@ export default function CancelAppointment({handleClose, show, role, appointment}
     }
 
     function cancelAppointment(dto) {
-        //TODO napravi endpoint za rezer
+        //TODO smisli kako ce da bude kada budes slao dto
+        //TODO prakticno ja brisem po atributu i ne trebaju mi podaci ni za sta jer ne belezim ko je obrisao nego samo da se obrisalo
+        axios.delete("appointment/cancel/" + id).then(value => {
+            setAppointments(value.data)
+        })
     }
 
     const handleSubmit = e => {

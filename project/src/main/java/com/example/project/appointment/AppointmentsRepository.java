@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface AppointmentsRepository extends JpaRepository<Appointment, Long> {
 
-    @Query("FROM Appointment WHERE User.email = ?1")
-    List<Appointment> getAppointmentByUserEmail(String email);
+
 }
