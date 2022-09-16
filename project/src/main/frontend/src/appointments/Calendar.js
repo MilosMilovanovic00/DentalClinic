@@ -74,7 +74,6 @@ export default function Calendar() {
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                 initialView="timeGridWeek"
                 slotDuration='00:30'
-                timeZone="local"
                 selectable={true}
                 nowIndicator={true}
                 events={appointments}
@@ -85,14 +84,13 @@ export default function Calendar() {
                         year: 'numeric'
                     }
                 }
-                locale="en"
                 slotMinTime="09:00:00"
                 slotMaxTime="17:00:00"
                 allDaySlot={false}
                 validRange={
                     {start: new Date()}
                 }
-                eventOverlap={false}
+                // eventOverlap={false}
                 height={"auto"}
                 ref={calendarRef}
                 eventClick={(arg) => {
@@ -102,7 +100,7 @@ export default function Calendar() {
                         tomorrow.setDate(date + 1)
                         if (Date.parse(appointment.start) < tomorrow) {
                             showInfo("You can't cancel appointment 24 hours")
-                        } else if (appointment.id === arg.event.id) {
+                        } else if (appointment.id.toString()=== arg.event.id) {
                             setAppointmentData(appointment)
                             handleShowCanceling()
                         }

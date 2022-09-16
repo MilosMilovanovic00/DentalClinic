@@ -16,7 +16,7 @@ public class AppointmentDTO {
     private Long id;
     private String start;
     private String end;
-    private String analysisType;
+    private String title;
     private String doctorEmail;
     private String patientEmail;
 
@@ -24,7 +24,7 @@ public class AppointmentDTO {
         this.id = appointment.getId();
         this.start = appointment.getStart().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         this.end = appointment.getEnd().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-        this.analysisType = appointment.getAnalysisType().name();
+        this.title = appointment.getAnalysisType().name();
         this.doctorEmail = appointment.getDoctor().getEmail();
         this.patientEmail = appointment.getPatient().getEmail();
     }

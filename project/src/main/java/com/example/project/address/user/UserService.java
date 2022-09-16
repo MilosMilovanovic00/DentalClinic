@@ -1,4 +1,4 @@
-package com.example.project.user;
+package com.example.project.address.user;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -84,4 +84,7 @@ public class UserService {
         }
     }
 
+    public String getRoleByUsername(String loggedUserEmail) {
+        return userRepository.getUserByEmail(loggedUserEmail).getRole().name();
+    }
 }

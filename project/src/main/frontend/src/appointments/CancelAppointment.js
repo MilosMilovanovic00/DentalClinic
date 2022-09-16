@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Form, Modal} from "react-bootstrap";
-import {emptyInput} from "../utils";
+import {emptyInput, showError, showSuccess} from "../utils";
 import axios from "axios";
 
 export default function CancelAppointment({handleClose, show, role, appointment, setAppointments}) {
@@ -13,22 +13,41 @@ export default function CancelAppointment({handleClose, show, role, appointment,
     const findFormErrors = () => {
         const {doctorEmail, patientEmail} = form
         const newErrors = {}
-        console.log(emptyInput)
-        if (!doctorEmail) newErrors.doctorEmail = emptyInput
-        else if (!doctorEmail.includes('@gmail.com')) newErrors.doctorEmail = 'Must contain @gmail.com'
-
-        if (cancelForPatient) {
-            if (!patientEmail) newErrors.patientEmail = emptyInput
-            else if (!patientEmail.includes('@gmail.com')) newErrors.patientEmail = 'Must contain @gmail.com'
+        if (role === "Doctor") {
+            if (!doctorEmail) newErrors.doctorEmail = emptyInput
+            else if (!doctorEmail.includes('@gmail.com')) newErrors.doctorEmail = 'Must contain @gmail.com'
+            if (cancelForPatient) {
+                if (!patientEmail) newErrors.patientEmail = emptyInput
+                else if (!patientEmail.includes('@gmail.com')) newErrors.patientEmail = 'Must contain @gmail.com'
+            }
         }
         return newErrors
     }
 
-    function cancelAppointment(dto) {
-        //TODO smisli kako ce da bude kada budes slao dto
-        //TODO prakticno ja brisem po atributu i ne trebaju mi podaci ni za sta jer ne belezim ko je obrisao nego samo da se obrisalo
-        axios.delete("appointment/cancel/" + id).then(value => {
+    function cancelAppointmentAsPatient() {
+        axios.post("http://localhost:8080/appointment/cancel", appointment.id.toString(), {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token'),
+                'Content-Type': 'text/plain'
+            }
+        }).then(value => {
             setAppointments(value.data)
+            handleClose()
+            showSuccess("You successfully canceled appointment")
+        })
+    }
+
+    function cancelAppointmentAsDoctor(dto) {
+        axios.post("http://localhost:8080/appointment/cancelAsDoctor", dto, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            }
+        }).then(value => {
+            setAppointments(value.data)
+            handleClose()
+            showSuccess("You successfully canceled appointment")
+        }).catch(reason => {
+            showError(reason.response.data)
         })
     }
 
@@ -40,10 +59,14 @@ export default function CancelAppointment({handleClose, show, role, appointment,
         } else {
             const dto = {
                 patientEmail: form.patientEmail,
+                patientChecked: cancelForPatient,
                 doctorEmail: form.doctorEmail,
                 id: appointment.id
             }
-            cancelAppointment(dto)
+            if (role === "Doctor") {
+                cancelAppointmentAsDoctor(dto)
+            } else
+                cancelAppointmentAsPatient()
         }
     }
     const setField = (field, value) => {
@@ -91,7 +114,7 @@ export default function CancelAppointment({handleClose, show, role, appointment,
                             </Form.Control.Feedback>
                         </div>
                     }
-                    <Form.Label>Analysis type: {appointment.analysisType} </Form.Label>
+                    <Form.Label>Analysis type: {appointment.title} </Form.Label>
                     <Form.Label>Scheduled at: {new Date(Date.parse(appointment.start)).toLocaleString("en-US", options)}
                     </Form.Label>
                 </div>

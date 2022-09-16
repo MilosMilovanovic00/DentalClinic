@@ -1,9 +1,7 @@
 package com.example.project.dto;
 
-import com.example.project.address.Address;
-import com.example.project.user.User;
+import com.example.project.address.user.User;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class UserDTO {

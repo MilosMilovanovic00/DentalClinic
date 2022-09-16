@@ -1,4 +1,4 @@
-package com.example.project.user;
+package com.example.project.address.user;
 
 import com.example.project.dto.LoginResponseDTO;
 import com.example.project.dto.UserDTO;
@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")

@@ -10,7 +10,6 @@ export default function ScheduleAppointment({show, handleClose, role, setAppoint
         const newErrors = {}
         if (!email) newErrors.email = emptyInput
         else if (!email.includes('@gmail.com')) newErrors.email = 'Must contain @gmail.com'
-
         if (!chosenEmail) newErrors.chosenEmail = emptyInput
         if (!analysisType) newErrors.analysisType = emptyInput
 
@@ -79,6 +78,8 @@ export default function ScheduleAppointment({show, handleClose, role, setAppoint
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors)
         } else {
+            form.start.setHours(form.start.getHours() - form.start.getTimezoneOffset() / 60)
+            form.end.setHours(form.end.getHours() - form.end.getTimezoneOffset() / 60)
             const dto = {
                 patientEmail: form.patientEmail,
                 doctorEmail: form.doctorEmail,
@@ -86,8 +87,8 @@ export default function ScheduleAppointment({show, handleClose, role, setAppoint
                 end: form.end.toISOString().split(".")[0],
                 analysisType: form.analysisType,
             }
-            console.log(dto)
             scheduleAppointment(dto)
+            setErrors({})
         }
     }
     const setField = (field, value) => {
@@ -109,11 +110,11 @@ export default function ScheduleAppointment({show, handleClose, role, setAppoint
             }
         }).then(value => {
             setAppointments(value.data)
-            showSuccess("Ypu successfully scheduled an appointment")
+            showSuccess("You successfully scheduled an appointment")
+            handleClose()
         }).catch(reason => {
-            showError('Some thing went wrong try again')
+            showError(reason.response.data)
         })
-        //TODO make end point function for scheduling
     }
 
     return (
