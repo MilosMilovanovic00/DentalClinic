@@ -24,7 +24,7 @@ public class EmailService implements EmailSender {
             helper.setText(email, true);
             helper.setTo("simpletaskproject20+" + to);
             helper.setSubject(subject);
-            helper.setFrom("simpletaskproject@yahoo.com");
+            helper.setFrom("milos2000.mm@gmail.com");
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             throw new IllegalStateException("failed to send email");
@@ -127,7 +127,6 @@ public class EmailService implements EmailSender {
                 "\t\t\t\tmargin: 0 auto;\n" +
                 "\t\t\t}\n" +
                 "\n" +
-                "\t\t\t.fullMobileWidth,\n" +
                 "\t\t\t.row-content {\n" +
                 "\t\t\t\twidth: 100% !important;\n" +
                 "\t\t\t}\n" +
@@ -155,32 +154,55 @@ public class EmailService implements EmailSender {
                 "\t\t\t\tmax-height: none !important;\n" +
                 "\t\t\t}\n" +
                 "\n" +
-                "\t\t\t.row-4 .column-1 .block-2.heading_block h2,\n" +
-                "\t\t\t.row-6 .column-1 .block-1.heading_block h2 {\n" +
+                "\t\t\t.row-3 .column-1 .block-1.heading_block h3 {\n" +
+                "\t\t\t\tfont-size: 26px !important;\n" +
+                "\t\t\t}\n" +
+                "\n" +
+                "\t\t\t.row-3 .column-1 .block-2.heading_block h2,\n" +
+                "\t\t\t.row-4 .column-1 .block-1.heading_block h2 {\n" +
                 "\t\t\t\tfont-size: 20px !important;\n" +
                 "\t\t\t}\n" +
                 "\n" +
-                "\t\t\t.row-1 .column-1 .block-2.heading_block td.pad {\n" +
+                "\t\t\t.row-2 .column-1 .block-2.heading_block td.pad {\n" +
                 "\t\t\t\tpadding: 10px 60px 30px !important;\n" +
                 "\t\t\t}\n" +
                 "\n" +
-                "\t\t\t.row-1 .column-1 .block-2.heading_block h1 {\n" +
+                "\t\t\t.row-2 .column-1 .block-2.heading_block h1 {\n" +
                 "\t\t\t\tfont-size: 33px !important;\n" +
-                "\t\t\t}\n" +
-                "\n" +
-                "\t\t\t.row-4 .column-1 .block-1.heading_block h3 {\n" +
-                "\t\t\t\tfont-size: 26px !important;\n" +
                 "\t\t\t}\n" +
                 "\t\t}\n" +
                 "\t</style>\n" +
                 "</head>\n" +
                 "\n" +
-                "<body style=\"background-color: #c4e8c2; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;\">\n" +
+                "<body style=\"margin: 0; background-color: #c4e8c2; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;\">\n" +
                 "\t<table class=\"nl-container\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #c4e8c2;\">\n" +
                 "\t\t<tbody>\n" +
                 "\t\t\t<tr>\n" +
                 "\t\t\t\t<td>\n" +
-                "\t\t\t\t\t<table class=\"row row-1\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto;\">\n" +
+                "\t\t\t\t\t<table class=\"row row-1\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
+                "\t\t\t\t\t\t<tbody>\n" +
+                "\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t<td>\n" +
+                "\t\t\t\t\t\t\t\t\t<table class=\"row-content stack\" align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #c4e8c2; color: #000000; width: 665px;\" width=\"665\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t<tbody>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"column column-1\" width=\"100%\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"paragraph_block block-1\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"pad\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div style=\"color:#101112;font-size:16px;font-family:Poppins, Arial, Helvetica, sans-serif;font-weight:400;line-height:120%;text-align:left;direction:ltr;letter-spacing:0px;mso-line-height-alt:19.2px;\"></div>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
+                "\t\t\t\t\t\t\t\t\t</table>\n" +
+                "\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t</tbody>\n" +
+                "\t\t\t\t\t</table>\n" +
+                "\t\t\t\t\t<table class=\"row row-2\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto;\">\n" +
                 "\t\t\t\t\t\t<tbody>\n" +
                 "\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t<td>\n" +
@@ -203,53 +225,7 @@ public class EmailService implements EmailSender {
                 "\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t</tbody>\n" +
                 "\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t<table class=\"row row-2\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t<tbody>\n" +
-                "\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t<td>\n" +
-                "\t\t\t\t\t\t\t\t\t<table class=\"row-content stack\" align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 665px;\" width=\"665\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t<tbody>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"column column-1\" width=\"100%\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"image_block block-1\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"pad\" style=\"width:100%;padding-right:0px;padding-left:0px;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"alignment\" align=\"center\" style=\"line-height:10px\"></div>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
-                "\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t</tbody>\n" +
-                "\t\t\t\t\t</table>\n" +
                 "\t\t\t\t\t<table class=\"row row-3\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t<tbody>\n" +
-                "\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t<td>\n" +
-                "\t\t\t\t\t\t\t\t\t<table class=\"row-content stack\" align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 665px;\" width=\"665\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t<tbody>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"column column-1\" width=\"100%\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 60px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"heading_block block-1\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"pad\" style=\"text-align:center;width:100%;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h1 style=\"margin: 0; color: #8a3c90; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;\"><span class=\"tinyMce-placeholder\"></span></h1>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
-                "\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t</tbody>\n" +
-                "\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t<table class=\"row row-4\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
                 "\t\t\t\t\t\t<tbody>\n" +
                 "\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t<td>\n" +
@@ -279,96 +255,7 @@ public class EmailService implements EmailSender {
                 "\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t</tbody>\n" +
                 "\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t<table class=\"row row-5\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t<tbody>\n" +
-                "\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t<td>\n" +
-                "\t\t\t\t\t\t\t\t\t<table class=\"row-content stack\" align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; border-radius: 0; width: 665px;\" width=\"665\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t<tbody>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"column column-1\" width=\"33.333333333333336%\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #c13584; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"icons_block block-2\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"pad\" style=\"vertical-align: middle; color: #ffffff; font-family: inherit; font-size: 16px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px; padding-top: 25px; text-align: center;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"alignment\" style=\"vertical-align: middle; text-align: center;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--[if vml]><table align=\"left\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;\"><![endif]-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--[if !vml]><!-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"icons-inner\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--<![endif]-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"vertical-align: middle; text-align: center; padding-top: 10px; padding-bottom: 25px; padding-left: 10px; padding-right: 10px;\"><a href=\"https://www.example.com\" target=\"_self\" style=\"text-decoration: none;\"><img class=\"icon\" alt=\"Instagram\" src=\"https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7311/insta.png\" height=\"32\" width=\"32\" align=\"center\" style=\"display: block; height: auto; margin: 0 auto; border: 0;\"></a></td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; color: #ffffff; vertical-align: middle; letter-spacing: undefined; text-align: center;\"><a href=\"https://www.example.com\" target=\"_self\" style=\"color: #ffffff; text-decoration: none;\">Instagram</a></td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"column column-2\" width=\"33.333333333333336%\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #6386e0; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"icons_block block-2\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"pad\" style=\"vertical-align: middle; color: #ffffff; font-family: inherit; font-size: 16px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px; padding-top: 25px; text-align: center;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"alignment\" style=\"vertical-align: middle; text-align: center;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--[if vml]><table align=\"left\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;\"><![endif]-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--[if !vml]><!-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"icons-inner\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--<![endif]-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"vertical-align: middle; text-align: center; padding-top: 10px; padding-bottom: 25px; padding-left: 10px; padding-right: 10px;\"><a href=\"https://www.example.com\" target=\"_self\" style=\"text-decoration: none;\"><img class=\"icon\" alt=\"Facebook\" src=\"https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7311/facebook.png\" height=\"32\" width=\"18\" align=\"center\" style=\"display: block; height: auto; margin: 0 auto; border: 0;\"></a></td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; color: #ffffff; vertical-align: middle; letter-spacing: undefined; text-align: center;\"><a href=\"https://www.example.com\" target=\"_self\" style=\"color: #ffffff; text-decoration: none;\">Facebook</a></td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"column column-3\" width=\"33.333333333333336%\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #7bc8ff; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"icons_block block-2\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"pad\" style=\"vertical-align: middle; color: #ffffff; font-family: inherit; font-size: 16px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px; padding-top: 25px; text-align: center;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"alignment\" style=\"vertical-align: middle; text-align: center;\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--[if vml]><table align=\"left\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;\"><![endif]-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--[if !vml]><!-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"icons-inner\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!--<![endif]-->\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"vertical-align: middle; text-align: center; padding-top: 10px; padding-bottom: 25px; padding-left: 10px; padding-right: 10px;\"><a href=\"https://www.example.com\" target=\"_self\" style=\"text-decoration: none;\"><img class=\"icon\" alt=\"Twitter\" src=\"https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7311/twitter.png\" height=\"32\" width=\"32\" align=\"center\" style=\"display: block; height: auto; margin: 0 auto; border: 0;\"></a></td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; color: #ffffff; vertical-align: middle; letter-spacing: undefined; text-align: center;\"><a href=\"https://www.example.com\" target=\"_self\" style=\"color: #ffffff; text-decoration: none;\">Twitter</a></td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
-                "\t\t\t\t\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t\t\t\t</td>\n" +
-                "\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t</tbody>\n" +
-                "\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t<table class=\"row row-6\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
+                "\t\t\t\t\t<table class=\"row row-4\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
                 "\t\t\t\t\t\t<tbody>\n" +
                 "\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t<td>\n" +
@@ -391,7 +278,7 @@ public class EmailService implements EmailSender {
                 "\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t</tbody>\n" +
                 "\t\t\t\t\t</table>\n" +
-                "\t\t\t\t\t<table class=\"row row-7\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
+                "\t\t\t\t\t<table class=\"row row-5\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n" +
                 "\t\t\t\t\t\t<tbody>\n" +
                 "\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t<td>\n" +
