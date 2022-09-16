@@ -1,4 +1,4 @@
-package com.example.project.user;
+package com.example.project.address.user;
 
 import com.example.project.address.Address;
 import lombok.*;
@@ -34,4 +34,7 @@ public class User {
     @OneToOne
     @JoinColumn
     private Address address;
+    public String getFullName(){
+        return getName()+" "+getSurname();
+    }
 }

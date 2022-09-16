@@ -40,3 +40,4 @@ export const showInfo = (message) => {
         progress: undefined,
     });
 }
+export const emptyInput = 'Cannot be blank'

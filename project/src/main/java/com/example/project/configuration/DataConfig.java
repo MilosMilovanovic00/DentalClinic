@@ -3,9 +3,9 @@ package com.example.project.configuration;
 import com.example.project.address.AddressRepository;
 import com.example.project.appointment.AppointmentsRepository;
 import com.example.project.address.Address;
-import com.example.project.user.Role;
-import com.example.project.user.User;
-import com.example.project.user.UserRepository;
+import com.example.project.address.user.Role;
+import com.example.project.address.user.User;
+import com.example.project.address.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -76,7 +76,7 @@ public class DataConfig {
             );
             User zika = new User(
                     2L,
-                    "žika",
+                    "Žika",
                     "Žikić",
                     "0404194718645",
                     LocalDate.of(1947, APRIL, 4),
