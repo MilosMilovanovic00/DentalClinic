@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -50,26 +51,30 @@ public class AppointmentService {
 
     public void sendCancellationEmail(Appointment appointment) {
         String patientMessage = "You have canceled an appointment at our dental clinic at " +
-                appointment.getStart().format(DateTimeFormatter.ofPattern("HH:mm EE dd of MMMM yyyy.")) + ". We are sorry you canceled. Please reach us if you need something.";
+                appointment.getStart().format(DateTimeFormatter.ofPattern("HH:mm EE dd MMMM yyyy")) + ". We are sorry you canceled. Please reach us if you need something.";
         String doctorMessage = "Patient " + appointment.getPatient().getFullName() + " cancelled an appointment at " +
-                appointment.getStart().format(DateTimeFormatter.ofPattern("HH:mm EE dd of MMMM yyyy.")) + ". Will we send email if it comes to any changes.";
-        String patientEmail = emailService.buildString(EmailService.EmailTitle.NoticeOnScheduled, EmailService.EmailMessageTitle.MessageTitleOnScheduled, patientMessage);
-        String doctorEmail = emailService.buildString(EmailService.EmailTitle.NoticeOnScheduled, EmailService.EmailMessageTitle.MessageTitleOnScheduled, doctorMessage);
-        emailService.send(appointment.getPatient().getEmail(), patientEmail, "Scheduled appointment");
-        emailService.send(appointment.getDoctor().getEmail(), doctorEmail, "Scheduled appointment");
+                appointment.getStart().format(DateTimeFormatter.ofPattern("HH:mm EE dd MMMM yyyy")) + ". Will we send email if it comes to any changes.";
+        String patientEmail = emailService.buildString(EmailService.EmailTitle.NoticeOnCancellation, EmailService.EmailMessageTitle.MessageTitleOnCancellation, patientMessage);
+        String doctorEmail = emailService.buildString(EmailService.EmailTitle.NoticeOnCancellation, EmailService.EmailMessageTitle.MessageTitleOnCancellation, doctorMessage);
+        emailService.send(appointment.getPatient().getEmail(), patientEmail, "Canceled appointment");
+        emailService.send(appointment.getDoctor().getEmail(), doctorEmail, "Canceled appointment");
     }
 
     public void cancelAppointment(String id) {
-        Appointment appointment = appointmentsRepository.getById(Long.valueOf(id));
-        appointmentsRepository.delete(appointment);
-        sendCancellationEmail(appointment);
+        Optional<Appointment> appointment = appointmentsRepository.getAppointmentById(Long.valueOf(id));
+        if (appointment.isEmpty())
+            throw new RuntimeException("This appointment isn't registered in the database");
+        appointmentsRepository.delete(appointment.get());
+        sendCancellationEmail(appointment.get());
     }
 
     public void cancelAppointmentAsDoctor(String id, User patient) {
-        Appointment appointment = appointmentsRepository.getById(Long.valueOf(id));
-        if (!appointment.getPatient().getEmail().equals(patient.getEmail()))
+        Optional<Appointment> appointment = appointmentsRepository.getAppointmentById(Long.valueOf(id));
+        if(appointment.isEmpty())
+            throw new RuntimeException("This appointment isn't registered in the database");
+        if (!appointment.get().getPatient().getEmail().equals(patient.getEmail()))
             throw new RuntimeException("You can't delete appointment for the inputted user");
-        appointmentsRepository.delete(appointment);
-        sendCancellationEmail(appointment);
+        appointmentsRepository.delete(appointment.get());
+        sendCancellationEmail(appointment.get());
     }
 }

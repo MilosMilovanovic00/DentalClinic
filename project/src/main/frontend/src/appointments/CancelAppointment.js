@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Button, Form, Modal} from "react-bootstrap";
 import {emptyInput, showError, showSuccess} from "../utils";
 import axios from "axios";
+import {setTime} from "@syncfusion/ej2-react-schedule";
 
 export default function CancelAppointment({handleClose, show, role, appointment, setAppointments}) {
     const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
@@ -25,15 +26,19 @@ export default function CancelAppointment({handleClose, show, role, appointment,
     }
 
     function cancelAppointmentAsPatient() {
+        console.log("nesto")
         axios.post("http://localhost:8080/appointment/cancel", appointment.id.toString(), {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token'),
-                'Content-Type': 'text/plain'
+                'Content-Type': "text/plain"
             }
         }).then(value => {
             setAppointments(value.data)
-            handleClose()
             showSuccess("You successfully canceled appointment")
+            setTimeout(()=>{
+
+                handleClose()
+            },500)
         })
     }
 
@@ -63,6 +68,7 @@ export default function CancelAppointment({handleClose, show, role, appointment,
                 doctorEmail: form.doctorEmail,
                 id: appointment.id
             }
+
             if (role === "Doctor") {
                 cancelAppointmentAsDoctor(dto)
             } else
