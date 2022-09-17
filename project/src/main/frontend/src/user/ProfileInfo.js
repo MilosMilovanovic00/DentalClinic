@@ -5,6 +5,7 @@ import {Button, FormText} from "react-bootstrap";
 import {FiLogOut} from "react-icons/fi";
 import axios from "axios";
 
+
 export default function ProfileInfo() {
     const {id} = useParams()
     const [user, setUser] = useState([])
@@ -13,6 +14,7 @@ export default function ProfileInfo() {
     useEffect(() => {
         axios.get("http://localhost:8080/user/data/" + id).then(value => {
             setUser(value.data)
+            console.log(value.data)
         })
     }, [])
     const logOut = () => {
@@ -24,7 +26,7 @@ export default function ProfileInfo() {
         <div className="d-flex flex-column m-3 py-3 rounded rounded-3 w-25 "
              style={{backgroundColor: colorPalette.darkest}}>
             <div className="d-flex flex-column align-items-center">
-                <img src="/images/loginImage.jpg" className="rounded-circle my-4 " width={150} height={150}/>
+                <img src={'/images/profile.png'} className="rounded-circle my-4 " width={150} height={150}/>
             </div>
             <div className="d-flex flex-column mx-4 gap-2">
                 <div className="d-flex flex-row w-100">

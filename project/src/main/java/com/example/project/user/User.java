@@ -29,7 +29,6 @@ public class User {
     private String personalIdentificationNumber;
     private LocalDate dateOfBirth;
     private String email;
-    private String profileImage;
     private Role role;
     @OneToOne
     @JoinColumn

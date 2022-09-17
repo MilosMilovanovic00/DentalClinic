@@ -62,7 +62,7 @@ public class DataConfig {
                     "Eagles Nest Drive",
                     "4101"
             );
-            addressRepository.saveAllAndFlush(List.of(address1, address2, address3, address4, address5));
+            addressRepository.saveAll(List.of(address1, address2, address3, address4, address5));
             User mika = new User(
                     1L,
                     "Mika",
@@ -70,7 +70,6 @@ public class DataConfig {
                     "2603198431542",
                     LocalDate.of(1984, MARCH, 26),
                     "mikamikic@gmail.com",
-                    "",
                     Role.Patient,
                     address1
             );
@@ -81,7 +80,6 @@ public class DataConfig {
                     "0404194718645",
                     LocalDate.of(1947, APRIL, 4),
                     "zikazikic@gmail.com",
-                    "",
                     Role.Patient,
                     address2
             );
@@ -92,7 +90,6 @@ public class DataConfig {
                     "1512199718665",
                     LocalDate.of(1997, DECEMBER, 15),
                     "jasminanovakovic@gmail.com",
-                    "",
                     Role.Patient,
                     address3
                     );
@@ -103,7 +100,6 @@ public class DataConfig {
                     "2902200401621",
                     LocalDate.of(2004, FEBRUARY, 29),
                     "martasimic@gmail.com",
-                    "",
                     Role.Patient,
                     address4
             );
@@ -114,12 +110,10 @@ public class DataConfig {
                     "0905197411698",
                     LocalDate.of(1974, JUNE, 9),
                     "draganmarkovic@gmail.com",
-                    "",
                     Role.Doctor,
                     address5
             );
-//            this.userRepository.saveAll(List.of(mika, zika, jasmina, marta, dragan));
-            this.userRepository.saveAllAndFlush(List.of(mika, zika, jasmina, marta, dragan));
+            this.userRepository.saveAll(List.of(mika, zika, jasmina, marta, dragan));
         };
     }
 }
