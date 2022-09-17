@@ -1,6 +1,6 @@
 package com.example.project.appointment;
 
-import com.example.project.address.user.User;
+import com.example.project.user.User;
 import com.example.project.configuration.email.EmailService;
 import com.example.project.dto.AppointmentDTO;
 import com.example.project.dto.ScheduleAppointmentDTO;

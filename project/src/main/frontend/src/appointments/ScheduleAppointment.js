@@ -67,7 +67,6 @@ export default function ScheduleAppointment({show, handleClose, role, setAppoint
             axios.get("http://localhost:8080/user/emails/" + role).then(value => {
                 setEmails(value.data)
             })
-
     }
 
     const [form, setForm] = useState({})

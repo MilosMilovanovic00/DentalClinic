@@ -1,4 +1,4 @@
-package com.example.project.address.user;
+package com.example.project.user;
 
 import com.example.project.dto.LoginResponseDTO;
 import com.example.project.dto.UserDTO;

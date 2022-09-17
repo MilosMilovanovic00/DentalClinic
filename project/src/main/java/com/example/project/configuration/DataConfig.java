@@ -3,9 +3,9 @@ package com.example.project.configuration;
 import com.example.project.address.AddressRepository;
 import com.example.project.appointment.AppointmentsRepository;
 import com.example.project.address.Address;
-import com.example.project.address.user.Role;
-import com.example.project.address.user.User;
-import com.example.project.address.user.UserRepository;
+import com.example.project.user.Role;
+import com.example.project.user.User;
+import com.example.project.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,7 +62,7 @@ public class DataConfig {
                     "Eagles Nest Drive",
                     "4101"
             );
-            addressRepository.saveAll(List.of(address1, address2, address3, address4, address5));
+            addressRepository.saveAllAndFlush(List.of(address1, address2, address3, address4, address5));
             User mika = new User(
                     1L,
                     "Mika",
@@ -118,7 +118,8 @@ public class DataConfig {
                     Role.Doctor,
                     address5
             );
-            this.userRepository.saveAll(List.of(mika, zika, jasmina, marta, dragan));
+//            this.userRepository.saveAll(List.of(mika, zika, jasmina, marta, dragan));
+            this.userRepository.saveAllAndFlush(List.of(mika, zika, jasmina, marta, dragan));
         };
     }
 }

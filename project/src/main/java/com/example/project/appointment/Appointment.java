@@ -1,7 +1,7 @@
 package com.example.project.appointment;
 
 import com.example.project.dto.ScheduleAppointmentDTO;
-import com.example.project.address.user.User;
+import com.example.project.user.User;
 import lombok.*;
 
 import javax.persistence.*;

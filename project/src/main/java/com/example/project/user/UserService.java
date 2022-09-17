@@ -1,4 +1,4 @@
-package com.example.project.address.user;
+package com.example.project.user;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

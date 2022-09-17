@@ -1,7 +1,7 @@
 package com.example.project.appointment;
 
-import com.example.project.address.user.User;
-import com.example.project.address.user.UserService;
+import com.example.project.user.User;
+import com.example.project.user.UserService;
 import com.example.project.dto.AppointmentDTO;
 import com.example.project.dto.CancelAppointmentDTO;
 import com.example.project.dto.ScheduleAppointmentDTO;
