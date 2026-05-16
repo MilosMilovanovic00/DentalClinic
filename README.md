@@ -1,6 +1,6 @@
 # 🦷 DentalClinic
 
-A full-stack web application for managing a dental clinic. Built as part of an internship interview process.
+A full-stack web application for managing dental clinic appointments. Built as part of an internship interview process.
 
 > 💼 **Internship Project** — developed as a technical assignment for an internship interview.
 
@@ -11,8 +11,8 @@ A full-stack web application for managing a dental clinic. Built as part of an i
 | Technology | Purpose |
 |---|---|
 | **Java / Spring Boot** | Backend REST API |
-| **JavaScript** | Frontend |
-| **HTML** | UI structure |
+| **Spring Security + JWT** | Authentication & authorization |
+| **React** | Frontend |
 | **SCSS** | Styling |
 | **Maven** | Build tool |
 
@@ -20,9 +20,8 @@ A full-stack web application for managing a dental clinic. Built as part of an i
 
 ## ✨ Features
 
-- 🦷 **Patient management** — Manage patient records and information
-- 📅 **Appointment scheduling** — Book and manage dental appointments
-- 🔐 **Authentication** — Secure login and registration
+- 📅 **Appointment scheduling** — Patients can book dental appointments
+- 🔐 **Authentication** — Secure login and registration with JWT tokens
 
 ---
 
